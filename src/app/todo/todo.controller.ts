@@ -18,8 +18,8 @@ import { IndexTodoSwagger } from './swagger/index-todo.swagger';
 import { CreateTodoSwagger } from './swagger/create-todo.swagger';
 import { ShowTodoSwagger } from './swagger/show-todo.swagger';
 import { UpdateTodoSwagger } from './swagger/update-todo.swagger';
-import { BadRequestSwagger } from 'src/helpers/swagger/bad-request.swagger';
-import { NotFoundSwagger } from 'src/helpers/swagger/not-found.swagger';
+import { BadRequestSwagger } from '../../helpers/swagger/bad-request.swagger';
+import { NotFoundSwagger } from '../../helpers/swagger/not-found.swagger';
 
 @Controller('api/v1/todos')
 @ApiTags('todos')
@@ -104,6 +104,6 @@ export class TodoController {
   })
   @HttpCode(HttpStatus.NO_CONTENT)
   async destroy(@Param('id', new ParseUUIDPipe()) id: string) {
-    await this.todoService.DeleteQueryBuilder(id);
+    await this.todoService.deleteById(id);
   }
 }
